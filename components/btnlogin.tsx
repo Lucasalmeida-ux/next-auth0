@@ -2,6 +2,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function BtnLogin() {
     const { data: session } = useSession();
+    console.log("🚀 ~ file: btnlogin.tsx ~ line 5 ~ BtnLogin ~ session", session)
     if (session && session.user) {
         return (
             <>
@@ -13,7 +14,7 @@ export default function BtnLogin() {
     return (
         <>
             Not signed in <br />
-            <button onClick={() => signIn()}>Sign in</button>
+            <button onClick={() => signIn('keycloak')}>Sign in</button>
         </>
     );
 }

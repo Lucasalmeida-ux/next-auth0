@@ -1,11 +1,11 @@
 import NextAuth from "next-auth";
-import Auth0Provider, { Auth0Profile } from "next-auth/providers/auth0";
+import KeycloakProvider, { KeycloakProfile } from "next-auth/providers/keycloak";
 export default NextAuth({
     providers: [
-        Auth0Provider<Auth0Profile>({
-            clientId: process.env.AUTH0_ID ?? "",
-            clientSecret: process.env.AUTH0_SECRET ?? "",
-            issuer: process.env.AUTH0_ISSUER
-        }),
+        KeycloakProvider<KeycloakProfile>({
+            clientId: process.env.KEYCLOAK_ID as string,
+            clientSecret: process.env.KEYCLOAK_SECRET as string,
+            issuer: process.env.KEYCLOAK_ISSUER,
+        })
     ],
 });
